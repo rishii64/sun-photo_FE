@@ -207,10 +207,10 @@ h2 {
     margin-top: 20px;
     border-radius: 20px;
     border: 1px solid #ddd;
-    max-height: 260px;
+    max-height: 300px;
     width: 100%;
-    object-fit: cover;
-    display: none;
+    object-fit: contain;
+    display: block;
 }
 
 .submit-btn {
@@ -277,33 +277,6 @@ h2 {
     color: #444;
     font-size: 15px;
     padding-left: 4px;
-}
-
-.leaf-top {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 180px;
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-.leaf-bottom {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 340px;
-    opacity: 0.75;
-    pointer-events: none;
-}
-
-.leaf-left {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 220px;
-    opacity: 0.35;
-    pointer-events: none;
 }
 
 @media(max-width: 1024px) {
