@@ -1,0 +1,126 @@
+:root {
+    --baxter-accent: #2c3e50;
+    /* A professional dark slate */
+    --bg-light: #fdfdfd;
+    --border-color: #eaeaea;
+    --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    /* background-color: var(--bg-light); */
+    background-image: './assets/Baxter_bg1.png';
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* .globe {
+    position: absolute;
+    width: 100rem !important;
+    height: 100rem;
+} */
+
+.container {
+    width: 100%;
+    max-width: 550px;
+}
+
+h2.brand {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--baxter-accent);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.post-form {
+    background: #fff;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Modernized Input Wrapper */
+.file-upload-container {
+    border: 1px dashed var(--border-color);
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    background: #fafafa;
+}
+
+input[type="file"] {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Image Preview Style */
+.image-preview {
+    max-width: 100%;
+    max-height: 250px;
+    margin: 10px auto;
+    border-radius: 4px;
+    display: none;
+    /* Hidden until upload */
+    border: 1px solid var(--border-color);
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    resize: none;
+    font-size: 1rem;
+    box-sizing: border-box;
+    /* Crucial for padding */
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #b0b0b0;
+}
+
+button.baxter-btn {
+    background-color: var(--baxter-accent);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+
+button.baxter-btn:hover {
+    opacity: 0.9;
+}
+
+.wall-link {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    color: #777;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.wall-link:hover {
+    color: var(--baxter-accent);
+    text-decoration: underline;
+}
