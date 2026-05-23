@@ -1,7 +1,7 @@
 const isPostPage = document.getElementById("postForm") !== null;
 const isWallPage = document.getElementById("postWall") !== null;
 const totalComments = document.getElementById("totalComments");
-// const backend_URI = "https://baxter-pw.vercel.app";
+// const backend_URI = "https://sun-photo-be.vercel.app/";
 
 // TOAST NOTIFICATION FUNCTION
 function showToast(message, type = 'error') {
@@ -14,7 +14,7 @@ function showToast(message, type = 'error') {
   }
 
   const toast = document.createElement('div');
-  const bgColor = type === 'success' ? 'bg-[#3e6b4f]' : 'bg-red-500';
+  const bgColor = type === 'success' ? 'bg-[#fdb44b]' : 'bg-red-500';
   const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
 
   toast.className = `${bgColor} text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 transform transition-all duration-300 translate-x-full opacity-0`;
@@ -235,8 +235,8 @@ if (isWallPage) {
 // ------------------------------------------------
 async function savePost(formData) {
   try {
-    const response = await fetch(`https://baxter-pw.vercel.app/api/posts`, {
-      // const response = await fetch(`http://localhost:5000/api/posts`, {
+    const response = await fetch(`https://sun-photo-be.vercel.app/api/posts`, {
+    // const response = await fetch(`http://localhost:5000/api/posts`, {
       method: "POST",
       body: formData  // Send FormData directly, not JSON
     });
@@ -255,7 +255,7 @@ async function savePost(formData) {
 }
 async function getPosts(page = 1, limit = 5) {
   try {
-    const res = await fetch(`https://baxter-pw.vercel.app/api/posts?page=${page}&limit=${limit}`);
+    const res = await fetch(`https://sun-photo-be.vercel.app/api/posts?page=${page}&limit=${limit}`);
     // const res = await fetch(`http://localhost:5000/api/posts?page=${page}&limit=${limit}`);
     return await res.json();
   } catch (error) {
@@ -281,7 +281,7 @@ function renderPost(post, container) {
       <!-- User Info & Story Section -->
       <div class="flex gap-4 items-start flex-1">
         <!-- Profile Image -->
-        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-[#3e6b4f] flex-shrink-0 flex items-center justify-center">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-[#fdb44b] flex-shrink-0 flex items-center justify-center">
           ${post.profileImageUrl
       ? `<img src="${post.profileImageUrl}" crossorigin="anonymous" alt="${post.name}" class="w-full h-full object-cover" onerror="this.style.display='none'" />`
       : `<i class="fa-solid fa-user text-3xl md:text-5xl text-white"></i>`
@@ -355,9 +355,9 @@ async function downloadPostAs(elementId, format) {
     <!-- Top: Profile Info -->
     <div style="display: flex; align-items: top; gap: 20px; margin-bottom: 24px;">
       ${post.profileImageUrl
-        ? `<img src="${post.profileImageUrl}" crossorigin="anonymous" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #e4efe6;" />`
-        : `<div style="width: 70px; height: 70px; border-radius: 50%; background-color: #3e6b4f; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px;"><i class="fa-solid fa-user"></i></div>`
-      }
+      ? `<img src="${post.profileImageUrl}" crossorigin="anonymous" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #e4efe6;" />`
+      : `<div style="width: 70px; height: 70px; border-radius: 50%; background-color: #3e6b4f; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px;"><i class="fa-solid fa-user"></i></div>`
+    }
         <h2 style="margin: 0; font-size: 26px; font-weight: 600; color: #3e6b4f;">${safeName}</h2>
     </div>
 

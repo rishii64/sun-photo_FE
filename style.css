@@ -1,126 +1,373 @@
 :root {
-    --baxter-accent: #2c3e50;
-    /* A professional dark slate */
-    --bg-light: #fdfdfd;
-    --border-color: #eaeaea;
-    --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --orange: #df7a12;
+    --orange-dark: #dd7515;
+    --green: #5b7b5a;
+    --green-dark: #2d4334;
+    --light-bg: #f5f1ec;
+    --card-bg: #f8f5f1;
+    --border: #ddd6cf;
+    --input-border: #d6d0ca;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-family);
-    /* background-color: var(--bg-light); */
-    background-image: './assets/Baxter_bg1.png';
-    color: #333;
-    margin: 0;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-bg);
+    overflow-x: hidden;
     position: relative;
+    color: var(--green-dark);
 }
 
-/* .globe {
-    position: absolute;
-    width: 100rem !important;
-    height: 100rem;
-} */
-
-.container {
-    width: 100%;
-    max-width: 550px;
+h1,
+h2 {
+    font-family: 'Playfair Display', serif;
 }
 
-h2.brand {
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--baxter-accent);
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.post-form {
-    background: #fff;
-    padding: 25px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+.top-header {
+    background: #df6d00;
+    padding: 16px 24px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Modernized Input Wrapper */
-.file-upload-container {
-    border: 1px dashed var(--border-color);
-    padding: 15px;
-    border-radius: 4px;
-    text-align: center;
-    background: #fafafa;
+.comment-btn {
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s ease;
 }
 
-input[type="file"] {
-    font-size: 0.9rem;
+.comment-btn:hover {
+    background: white;
+    color: #df6d00;
+}
+
+.hero-title {
+    line-height: 0.95;
+    font-weight: 700;
+    color: var(--green-dark);
+}
+
+.upload-heading {
+    color: #244130;
+    font-weight: 600;
+}
+
+.hero-subtitle {
+    margin-top: 16px;
+    color: #4d4d4d;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+.badge-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.badge-icon {
+    font-size: 34px;
+    color: var(--green);
+}
+
+.badge-title {
+    font-weight: 700;
+}
+
+.badge-subtitle {
+    font-size: 14px;
     color: #777;
 }
 
-/* Image Preview Style */
-.image-preview {
-    max-width: 100%;
-    max-height: 250px;
-    margin: 10px auto;
-    border-radius: 4px;
-    display: none;
-    /* Hidden until upload */
-    border: 1px solid var(--border-color);
+.deadline-icon {
+    font-size: 52px;
+    color: var(--orange);
 }
 
-textarea {
+.sidebar-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+}
+
+.deadline-text {
+    margin-top: 6px;
+    color: #444;
+}
+
+.form-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.input-field {
     width: 100%;
-    height: 100px;
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    resize: none;
-    font-size: 1rem;
-    box-sizing: border-box;
-    /* Crucial for padding */
+    border: 2px dashed var(--input-border);
+    background: transparent;
+    border-radius: 18px;
+    padding: 15px 18px;
+    font-size: 14px;
+    transition: 0.3s ease;
 }
 
-textarea:focus {
+.input-field:focus {
     outline: none;
-    border-color: #b0b0b0;
+    border-color: var(--green);
 }
 
-button.baxter-btn {
-    background-color: var(--baxter-accent);
+.profile-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: #e4eadf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-icon {
+    font-size: 40px;
+    color: var(--green);
+}
+
+.choose-btn {
+    background: var(--green);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: fit-content;
+}
+
+.choose-btn:hover {
+    background: #496c45;
+}
+
+.file-text {
+    font-size: 12px;
+    color: #777;
+}
+
+.upload-box {
+    border: 2px dashed var(--input-border);
+    border-radius: 20px;
+    min-height: 110px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.upload-icon-box {
+    background: #e4eadf;
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 36px;
+}
+
+.preview-image {
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    max-height: 260px;
+    width: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--orange);
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 0.9rem;
+    border-radius: 18px;
+    padding: 16px;
+    font-size: 18px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: 0.3s ease;
 }
 
-
-button.baxter-btn:hover {
-    opacity: 0.9;
+.submit-btn:hover {
+    background: var(--orange-dark);
 }
 
-.wall-link {
-    display: block;
-    margin-top: 25px;
-    text-align: center;
-    color: #777;
-    text-decoration: none;
-    font-size: 0.9rem;
+.bottom-message {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
-.wall-link:hover {
-    color: var(--baxter-accent);
-    text-decoration: underline;
+.bottom-icon {
+    background: #e4eadf;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 28px;
+}
+
+.bottom-text {
+    color: #555;
+    font-size: 14px;
+}
+
+.bottom-highlight {
+    margin-top: 6px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.sidebar-card {
+    padding: 24px;
+}
+
+.sidebar-icon {
+    font-size: 32px;
+    color: var(--green);
+}
+
+.guideline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: #444;
+    font-size: 15px;
+    padding-left: 4px;
+}
+
+.leaf-top {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 180px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.leaf-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 340px;
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.leaf-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 220px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+@media(max-width: 1024px) {
+    .sidebar-title {
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 768px) {
+
+    .leaf-top,
+    .leaf-bottom,
+    .leaf-left {
+        display: none;
+    }
+
+    .top-header {
+        padding: 14px 18px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .sidebar-title {
+        font-size: 22px;
+    }
+}
+
+@media(max-width: 640px) {
+
+    .card {
+        border-radius: 22px;
+    }
+
+    .upload-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .submit-btn {
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    .input-field {
+        padding: 13px 15px;
+    }
+
+    .hero-title {
+        line-height: 1.05;
+    }
+
+    .bottom-message {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .comment-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
 }
