@@ -123,6 +123,60 @@ if (isPostPage) {
 
     setButtonState(true);
 
+    // Image Compression Utility
+    const compressImage = (file, maxWidth = 1200, quality = 0.8) => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = () => {
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+
+            canvas.toBlob(
+              (blob) => {
+                if (!blob) return resolve(file); // fallback
+                const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + ".jpg", {
+                  type: "image/jpeg",
+                  lastModified: Date.now(),
+                });
+                resolve(compressedFile);
+              },
+              "image/jpeg",
+              quality
+            );
+          };
+          img.onerror = () => resolve(file); // fallback on error
+        };
+      });
+    };
+
+    let mainImageToUpload = file;
+    let profileImageToUpload = profileFile;
+
+    try {
+      showToast("Compressing images...", "success");
+      mainImageToUpload = await compressImage(file, 1200, 0.8);
+      if (profileFile) {
+        profileImageToUpload = await compressImage(profileFile, 300, 0.8);
+      }
+    } catch (error) {
+      console.warn("Compression failed, using original files", error);
+    }
+
     // Build FormData for multipart upload
     const formData = new FormData();
     formData.append("name", name);
@@ -130,17 +184,17 @@ if (isPostPage) {
     formData.append("phTitle", phTitle);
     formData.append("comment", comment || "No comment provided.");
     formData.append("date", new Date().toLocaleString());
-    formData.append("image", file);
+    formData.append("image", mainImageToUpload);
 
-    if (profileFile) {
-      formData.append("profileImage", profileFile);
+    if (profileImageToUpload) {
+      formData.append("profileImage", profileImageToUpload);
     }
 
     try {
-      const saved = await savePost(formData);
+      const result = await savePost(formData);
 
-      if (!saved) {
-        showToast("Failed to upload post. Please try again.", "error");
+      if (!result.success) {
+        showToast(result.error, "error");
         return;
       }
 
@@ -244,13 +298,13 @@ async function savePost(formData) {
     if (!response.ok) {
       const errorData = await response.json();
       console.error("Error saving post:", errorData);
-      return false;
+      return { success: false, error: errorData.error || "Failed to upload post. Please try again." };
     }
 
-    return true;
+    return { success: true };
   } catch (error) {
     console.error("Error saving post:", error);
-    return false;
+    return { success: false, error: "Network error occurred." };
   }
 }
 async function getPosts(page = 1, limit = 5) {
