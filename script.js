@@ -86,7 +86,9 @@ if (isPostPage) {
     });
   };
 
-  handleImagePreview(profileInput, profilePreview, profileFileName, "Please upload a valid profile image.", true);
+  if (profileInput) {
+    handleImagePreview(profileInput, profilePreview, profileFileName, "Please upload a valid profile image.", true);
+  }
   handleImagePreview(imageInput, imagePreview, fileNameSpan, "Please upload a valid image file.", false);
 
   // 2. Handle Form Submission
@@ -108,9 +110,9 @@ if (isPostPage) {
     const phTitle = photoTitle.value.trim();
     const comment = commentInput.value.trim();
     const file = imageInput.files[0];
-    const profileFile = profileInput.files[0];
+    const profileFile = profileInput ? profileInput.files[0] : null;
 
-    if (!name || !empID || !phTitle || !file) {
+    if (!name || !empID || !file) {
       showToast("Please upload all required fields.", "error");
       return;
     }
@@ -201,7 +203,7 @@ if (isPostPage) {
       // Reset form
       postForm.reset();
       imagePreview.classList.add("hidden");
-      profilePreview.innerHTML = `<i id="profileIcon" class="fa-regular fa-user text-4xl text-gray-600"></i>`;
+      if (profilePreview) profilePreview.innerHTML = `<i id="profileIcon" class="fa-regular fa-user text-4xl text-gray-600"></i>`;
       if (profileFileName) profileFileName.textContent = "No file chosen";
       if (fileNameSpan) fileNameSpan.textContent = "No file chosen";
 
